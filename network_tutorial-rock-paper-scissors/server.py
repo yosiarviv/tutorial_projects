@@ -6,7 +6,7 @@ from player import Player
 import sys
 
 
-server = "192.168.1.40"
+server = "192.168.1.33"
 port = 5555
 
 
@@ -18,7 +18,7 @@ try:
 except socket.error as e:
     str(e)
 
-s.listen(2)
+s.listen()
 print ("Waiting for a connection, Server Started")
 
 connected = set()
@@ -41,7 +41,7 @@ def threaded_client(conn, p,gameId):
                     break
                 else:
                     if data == "reset":
-                        game.reset()
+                        game.resetWent()
                     elif data != "get":
                         game.play(p, data)
 
